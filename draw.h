@@ -11,9 +11,9 @@ void add_box( struct matrix * edges,
               double width, double height, double depth );
 void add_sphere( struct matrix * edges,
                  double cx, double cy, double cz,
-                 double r, int step );
+                 double r, double step );
 struct matrix * generate_sphere(double cx, double cy, double cz,
-                                double r, int step );
+                                double r, double step );
 void add_torus( struct matrix * edges,
                 double cx, double cy, double cz,
                 double r1, double r2, int step );

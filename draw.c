@@ -60,7 +60,15 @@ void add_box( struct matrix * edges,
   ====================*/
 void add_sphere( struct matrix * edges,
                  double cx, double cy, double cz,
-                 double r, int step ) {
+                 double r, double step ) {
+
+  struct matrix * points = generate_sphere(cx, cy, cz, r, step);
+
+  int i = 0;
+  for (i = 0; i < points->lastcol; i++){
+    add_edge(edges, points->m[0][i], points->m[1][i], points->m[2][i], points->m[0][i] + 1, points->m[1][i] + 1, points->m[2][i] + 1);
+  }
+
   return;
 }
 
@@ -77,8 +85,26 @@ void add_sphere( struct matrix * edges,
            Returns a matrix of those points
   ====================*/
 struct matrix * generate_sphere(double cx, double cy, double cz,
-                                double r, int step ) {
-  return NULL;
+                                double r, double step ) {
+
+  struct matrix * result = new_matrix(4,4);
+
+  float i = 0;
+  for (i = 0; i < 1; i = i + step){
+    float x = 0;
+    float y = 0;
+    float z = 0;
+    float k = 0;
+    for (k = 0; k < 1; k = k + step){
+      x = r * cos(M_PI * k) + cx;
+      y = r * sin(M_PI * k) * cos(2 * M_PI * i) + cy;
+      z = r * sin(M_PI * k) * sin(2 * M_PI * i) + cz;
+
+      add_point(result, x, y, z);
+    }
+  }
+
+  return result;
 }
 
 /*======== void add_torus() ==========

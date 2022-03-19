@@ -207,6 +207,13 @@ void parse_file ( char * filename,
       add_box(edges, *xvals, *yvals, *zvals, xvals[1], yvals[1], zvals[1]);
     }
 
+    else if (strncmp(line, "sphere", strlen(line)) == 0){
+      fgets(line, sizeof(line), f);
+      sscanf(line, "%lf %lf %lf %lf ", xvals, yvals, zvals, xvals + 1);
+
+      add_sphere(edges, *xvals, *yvals, *zvals, xvals[1], 0.01);
+    }
+
     else if ( strncmp(line, "save", strlen(line)) == 0 ) {
       //printf("SAVE\t%s", line);
       fgets(line, sizeof(line), f);
