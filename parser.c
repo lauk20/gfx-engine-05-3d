@@ -214,6 +214,19 @@ void parse_file ( char * filename,
       add_sphere(edges, *xvals, *yvals, *zvals, xvals[1], 0.01);
     }
 
+    else if (strncmp(line, "torus", strlen(line)) == 0){
+      fgets(line, sizeof(line), f);
+      sscanf(line, "%lf %lf %lf %lf %lf", xvals, yvals, zvals, xvals + 1, yvals + 1);
+
+      add_torus(edges, *xvals, *yvals, *zvals, xvals[1], yvals[1], 0.01);
+    }
+
+    else if (strncmp(line, "clear", strlen(line)) == 0){
+      free_matrix(edges);
+
+      edges = new_matrix(4,4);
+    }
+
     else if ( strncmp(line, "save", strlen(line)) == 0 ) {
       //printf("SAVE\t%s", line);
       fgets(line, sizeof(line), f);
