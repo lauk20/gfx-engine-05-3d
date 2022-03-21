@@ -16,9 +16,9 @@ struct matrix * generate_sphere(double cx, double cy, double cz,
                                 double r, int step );
 void add_torus( struct matrix * edges,
                 double cx, double cy, double cz,
-                double r1, double r2, double step );
+                double r1, double r2, int step );
 struct matrix * generate_torus( double cx, double cy, double cz,
-                                double r1, double r2, double step );
+                                double r1, double r2, int step );
 
 //2D Curves
 void add_circle( struct matrix * points,
