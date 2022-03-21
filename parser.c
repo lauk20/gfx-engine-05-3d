@@ -211,14 +211,14 @@ void parse_file ( char * filename,
       fgets(line, sizeof(line), f);
       sscanf(line, "%lf %lf %lf %lf ", xvals, yvals, zvals, xvals + 1);
 
-      add_sphere(edges, *xvals, *yvals, *zvals, xvals[1], 10);
+      add_sphere(edges, *xvals, *yvals, *zvals, xvals[1], 20);
     }
 
     else if (strncmp(line, "torus", strlen(line)) == 0){
       fgets(line, sizeof(line), f);
       sscanf(line, "%lf %lf %lf %lf %lf", xvals, yvals, zvals, xvals + 1, yvals + 1);
 
-      add_torus(edges, *xvals, *yvals, *zvals, xvals[1], yvals[1], 0.1);
+      add_torus(edges, *xvals, *yvals, *zvals, xvals[1], yvals[1], 20);
     }
 
     else if (strncmp(line, "clear", strlen(line)) == 0){
